@@ -17,6 +17,13 @@ Notes:
 - The UI includes a Quality toggle (`Fast` uses center-pixel sampling; `High` averages pixels for better fidelity).
 - Use the `Ramp` selector to try different character ramps. Choose `Custom` to enter your own ramp string.
 
+New features:
+- Optional dithering (Floyd–Steinberg) to preserve texture and detail for photographic images. Toggle `Dither` in the UI.
+- PNG export and adjustable JPEG quality slider for smaller or higher-quality JPEG outputs.
+- Explicit progress indicator and cancel button for better handling of large images. Very large images are automatically downscaled to avoid memory issues.
+
+If you want immediate consistent output across machines, drop `DejaVuSansMono.ttf` into `assets/fonts/`.
+
 Files added:
 - `index.html` — main UI
 - `static/style.css` — styles and font-face

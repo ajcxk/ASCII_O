@@ -21,18 +21,22 @@
       </div>
 
       <div class="controls">
-        <label><input id="width-auto" type="checkbox" checked /> Auto width</label>
-        <label>Width: <span id="width-value">80</span> chars</label>
+        <label><input id="width-auto" type="checkbox" checked /> Auto width <span class="info" data-tooltip="Automatically choose a character width that fits the image based on font metrics and image size. Great for quick results.">i</span></label>
+
+        <label>Width: <span id="width-value">80</span> chars <span class="info" data-tooltip="The number of characters per line. Lower = blockier output, higher = more detail (but wider images).">i</span></label>
         <input id="width-range" type="range" min="20" max="200" value="80" />
 
-        <label>Font size: <input id="font-size" type="number" min="6" max="48" value="12" /></label>
+        <label>Font size: <input id="font-size" type="number" min="6" max="48" value="12" /> <span class="info" data-tooltip="Font size used when rendering the ASCII into an image. Larger fonts increase output image size and legibility.">i</span></label>
 
         <label>Quality:
           <select id="quality">
             <option value="high">High</option>
             <option value="fast" selected>Fast</option>
           </select>
+          <span class="info" data-tooltip="High: averages pixels (slower). Fast: samples center pixels (faster).">i</span>
         </label>
+
+        <label><input id="dither" type="checkbox" /> Dither <span class="info" data-tooltip="Apply Floyd–Steinberg dithering to the grayscale image before sampling to preserve detail and texture. May be slower.">i</span></label>
 
         <label>Ramp:
           <select id="ramp-select">
@@ -41,13 +45,23 @@
             <option value="dense">Dense</option>
             <option value="custom">Custom</option>
           </select>
+          <span class="info" data-tooltip="Character ramps map brightness to characters. Try different ramps for artistic effect.">i</span>
         </label>
         <input id="custom-ramp" type="text" placeholder="Custom ramp (e.g. @%#*...)" style="display:none;" />
+
+        <label>JPEG quality: <input id="jpeg-quality" type="range" min="10" max="100" step="1" value="92" /> <span id="jpeg-quality-value">92%</span> <span class="info" data-tooltip="JPEG export quality (higher = better image, larger file).">i</span></label>
 
         <div class="action-row">
           <button id="btn-convert" class="btn primary">Convert</button>
           <button id="btn-download-txt" class="btn" disabled>Download TXT</button>
           <button id="btn-download-jpeg" class="btn" disabled>Download JPEG</button>
+          <button id="btn-download-png" class="btn" disabled>Download PNG</button>
+          <button id="btn-cancel" class="btn" disabled>Cancel</button>
+        </div>
+
+        <div class="progress-row">
+          <progress id="progress" value="0" max="100"></progress>
+          <span id="progress-text" class="muted">Idle</span>
         </div>
       </div>
 
