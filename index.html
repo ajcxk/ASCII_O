@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ASCII Art Converter</title>
+  <link rel="stylesheet" href="static/style.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>ASCII Art Converter</h1>
+    <p class="sub">Upload an image and convert it to high-quality ASCII art (text and JPEG).</p>
+  </header>
+
+  <main class="container">
+    <section class="panel left">
+      <div id="drop-area" class="drop-area">
+        <p>Drag & drop an image here, or</p>
+        <input id="file-input" type="file" accept="image/*" />
+        <button id="btn-select" class="btn">Choose file</button>
+      </div>
+
+      <div class="controls">
+        <label><input id="width-auto" type="checkbox" checked /> Auto width</label>
+        <label>Width: <span id="width-value">80</span> chars</label>
+        <input id="width-range" type="range" min="20" max="200" value="80" />
+
+        <label>Font size: <input id="font-size" type="number" min="6" max="48" value="12" /></label>
+
+        <label>Quality:
+          <select id="quality">
+            <option value="high">High</option>
+            <option value="fast" selected>Fast</option>
+          </select>
+        </label>
+
+        <label>Ramp:
+          <select id="ramp-select">
+            <option value="detailed" selected>Detailed</option>
+            <option value="simple">Simple</option>
+            <option value="dense">Dense</option>
+            <option value="custom">Custom</option>
+          </select>
+        </label>
+        <input id="custom-ramp" type="text" placeholder="Custom ramp (e.g. @%#*...)" style="display:none;" />
+
+        <div class="action-row">
+          <button id="btn-convert" class="btn primary">Convert</button>
+          <button id="btn-download-txt" class="btn" disabled>Download TXT</button>
+          <button id="btn-download-jpeg" class="btn" disabled>Download JPEG</button>
+        </div>
+      </div>
+
+      <div class="preview">
+        <h3>Rendered Preview</h3>
+        <div class="preview-area">
+          <canvas id="source-canvas" style="display:none;"></canvas>
+          <img id="rendered-preview" alt="Rendered ASCII preview" />
+        </div>
+      </div>
+    </section>
+
+    <section class="panel right">
+      <h2>Raw ASCII</h2>
+      <pre id="ascii-output" class="ascii-output" spellcheck="false"></pre>
+    </section>
+  </main>
+
+  <script>
+    if (!window.Worker) console.warn('Web Workers not supported — large conversions may block the UI.');
+  </script>
+  <script src="static/app.js"></script>
+</body>
+</html>

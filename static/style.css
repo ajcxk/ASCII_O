@@ -1,0 +1,37 @@
+:root{
+  --bg:#0f1720;
+  --panel:#0b1220;
+  --muted:#9aa6b2;
+  --accent:#6ee7b7;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial}
+body{background:linear-gradient(180deg,#071021 0%, #0b1320 100%);color:#e6eef6}
+.header{padding:20px 24px}
+.header h1{margin:0;font-size:20px}
+.sub{margin:4px 0 0;color:var(--muted);font-size:13px}
+.container{display:flex;gap:18px;padding:16px}
+.panel{background:rgba(255,255,255,0.02);padding:16px;border-radius:10px;flex:1}
+.left{max-width:720px}
+.right{width:48%;min-width:320px}
+
+.drop-area{border:2px dashed rgba(255,255,255,0.04);padding:18px;border-radius:8px;text-align:center;transition:box-shadow .18s,transform .12s;cursor:pointer}
+.drop-area:hover{box-shadow:0 6px 18px rgba(0,0,0,.6);transform:translateY(-2px)}
+.drop-area input[type=file]{display:none}
+.btn{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:8px 12px;border-radius:8px;cursor:pointer;transition:all .15s}
+.btn.primary{background:linear-gradient(180deg,var(--accent),#4bd6a3);color:#062219;border:none}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(12,20,40,.6)}
+
+.controls{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.controls label{font-size:13px;color:var(--muted)}
+.action-row{display:flex;gap:8px;margin-top:8px}
+
+.preview{margin-top:12px}
+.preview-area{min-height:180px;border-radius:6px;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center}
+.preview-area img{max-width:100%;display:block}
+
+.ascii-output{background:#040404;color:#eaeaea;padding:12px;overflow:auto;border-radius:6px;min-height:300px;white-space:pre;font-family:DejaVuSansMonoLocal,monospace;font-size:12px}
+
+@font-face{font-family:DejaVuSansMonoLocal;src:local('DejaVu Sans Mono'), url('assets/fonts/DejaVuSansMono.ttf') format('truetype');font-display:swap}
+
+@media (max-width:900px){.container{flex-direction:column}.right{width:100%}}
